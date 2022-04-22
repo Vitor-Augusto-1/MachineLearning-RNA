@@ -1,4 +1,5 @@
 # Importando as biblioteca para o modelo de Machine learning utilizando RNA
+
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
@@ -37,7 +38,7 @@ floresta.fit(X_treinamento, Y_treinamento)
 previsoes = floresta.predict(X_teste)
 previsoes
 
-# criação da matriz de confunsao
+# criação da matriz de confusão
 from sklearn.metrics import confusion_matrix, accuracy_score
 matriz = confusion_matrix(Y_teste, previsoes)
 matriz
