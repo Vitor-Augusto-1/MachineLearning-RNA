@@ -1,0 +1,15 @@
+#Importando as bibliotecas para automação
+import time as tm
+import pyautogui as py
+import pyperclip as pc
+
+# Buscando a base de dados no Kagle com o pyautogui
+py.hotkey('ctrl', 't')
+link = 'https://www.kaggle.com/datasets/arshid/iris-flower-dataset'
+pc.copy(link)
+py.hotkey('ctrl', 'v')
+py.press('enter')
+tm.sleep(5)
+py.click(x=1032, y=234)
+
+#usar py.position para identificar as coordenandas da tela

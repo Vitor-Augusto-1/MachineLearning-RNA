@@ -1,0 +1,63 @@
+# Importando as biblioteca para o modelo de Machine learning utilizando RNA
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# Importando os dados e visualiazando
+dados = pd.read_csv(r'IRIS.csv')
+dados.shape
+dados
+
+# Criação das variaveis independentes
+X = dados.iloc[:, 0:4].values
+
+# Criação da classe
+Y = dados.iloc[:,4].values
+
+
+labelencoder = LabelEncoder()
+
+for x in range(4):
+    X[:, x] = labelencoder.fit_transform(X[:, x])
+
+# Divisão dos dados em treino e teste 
+from sklearn.model_selection import train_test_split
+X_treinamento, X_teste, Y_treinamento, Y_teste = train_test_split(X, Y, 
+                                                                  test_size=0.3,
+                                                                  random_state=0)
+
+# Criação do classificador Random Forest
+from sklearn.ensemble import RandomForestClassifier
+floresta = RandomForestClassifier(n_estimators = 100)
+floresta.fit(X_treinamento, Y_treinamento)
+
+# Previsões
+previsoes = floresta.predict(X_teste)
+previsoes
+
+# criação da matriz de confunsao
+from sklearn.metrics import confusion_matrix, accuracy_score
+matriz = confusion_matrix(Y_teste, previsoes)
+matriz
+
+# criando um gráfico da matriz de confusão
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.figure(figsize = (15, 5))
+sns.heatmap(matriz, annot=True)
+
+# Taxa de acerto
+taxa_acerto = accuracy_score(Y_teste, previsoes)
+taxa_acerto
+print('taxa de acerto')
+print ('-----------------------------')
+print(taxa_acerto)
+print('---------------------------')
+# Taxa de erro
+print ('Taxa de erro')
+taxa_erro = 1 - taxa_acerto
+taxa_erro
+print(taxa_erro)
+
