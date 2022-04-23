@@ -1,4 +1,4 @@
-# ML-RNA
+# Machine Learning -RNA
 Machine Learning e Rede Neural - Este projeto foi feito para mostrar 
 como funciona o algoritmo de arvore de decisão aleatoria "random forest" também conhecido como "Florestas Aleatorias" se for usado corretamente tem um ótimo aproveitamento.
 
